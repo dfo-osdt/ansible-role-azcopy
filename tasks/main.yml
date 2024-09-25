@@ -10,6 +10,11 @@
     repo: "deb [arch=amd64,arm64,armhf] https://packages.microsoft.com/ubuntu/{{ansible_distribution_version}}/prod {{ ansible_distribution_release }} main"
     state: present
 
+- name: update apt cache
+  become: true
+  ansible.builtin.apt:
+    update_cache: yes
+
 - name: Install AzCopy
   become: true
   ansible.builtin.apt:
