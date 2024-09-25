@@ -1,0 +1,14 @@
+galaxy_info:
+  author: Vincent Auger
+  description:  Install Microsoft AzCopy on Ubuntu
+  company: Fisheries and Oceans Canada
+
+  license: MIT
+
+  min_ansible_version: "2.9"
+  platforms:
+    - name: Ubuntu
+      versions:
+        - focal
+        - jammy
+        - noble

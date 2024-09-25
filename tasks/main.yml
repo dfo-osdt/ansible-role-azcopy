@@ -1,0 +1,17 @@
+---
+- name: Stop role if not running on Ubuntu
+  ansible.builtin.fail:
+    msg: "This role only works on Ubuntu"
+  when: ansible_distribution != 'Ubuntu'
+
+- name: Check that the Microsoft Linux Repository is present
+  become: true
+  ansible.builtin.apt_repository:
+    repo: "deb [arch=amd64,arm64,armhf] https://packages.microsoft.com/ubuntu/{{ansible_distribution_version}}/prod {{ ansible_distribution_release }} main"
+    state: present
+
+- name: Install AzCopy
+  become: true
+  ansible.builtin.apt:
+    name: azcopy
+    state: present
