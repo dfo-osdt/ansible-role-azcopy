@@ -4,6 +4,12 @@
     msg: "This role only works on Ubuntu"
   when: ansible_distribution != 'Ubuntu'
 
+- name: Install the Microsoft GPG key
+  become: true
+  ansible.builtin.apt_key:
+    url: https://packages.microsoft.com/keys/microsoft.asc
+    state: present
+
 - name: Check that the Microsoft Linux Repository is present
   become: true
   ansible.builtin.apt_repository:
