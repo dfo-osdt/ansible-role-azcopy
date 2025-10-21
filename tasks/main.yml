@@ -50,3 +50,4 @@
   ansible.builtin.apt:
     name: "azcopy{% if azcopy_version != 'latest' %}={{ azcopy_version }}{% endif %}"
     state: present
+    allow_downgrade: true
