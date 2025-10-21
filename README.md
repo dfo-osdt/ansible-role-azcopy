@@ -14,7 +14,10 @@ This role is for Ubuntu only.
 
 ## Role Variables
 
-No variables
+- `azcopy_version`: Version of AzCopy to install (default: `latest`)
+  - Set to `latest` to install the newest available version (may include preview versions)
+  - Set to a specific version to pin, e.g., `10.29.1` for stable releases
+  - Use `apt-cache madison azcopy` to see available versions
 
 ## Dependencies
 

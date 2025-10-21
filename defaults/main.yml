@@ -1,2 +1,7 @@
 ---
 # defaults file for ansible-role-azcopy
+
+# AzCopy version to install (e.g., '10.29.1' or 'latest')
+# Set to 'latest' to install the newest version (may include preview versions)
+# Set to a specific version to pin (e.g., '10.29.1')
+azcopy_version: latest

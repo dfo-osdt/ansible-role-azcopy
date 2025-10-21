@@ -48,5 +48,5 @@
 - name: Install AzCopy
   become: true
   ansible.builtin.apt:
-    name: azcopy
+    name: "azcopy{% if azcopy_version != 'latest' %}={{ azcopy_version }}{% endif %}"
     state: present
