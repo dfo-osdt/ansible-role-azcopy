@@ -4,6 +4,18 @@
     msg: "This role only works on Ubuntu"
   when: ansible_distribution != 'Ubuntu'
 
+- name: Remove old Microsoft repository entry (without signed-by)
+  become: true
+  ansible.builtin.apt_repository:
+    repo: "deb [arch=amd64,arm64,armhf] https://packages.microsoft.com/ubuntu/{{ansible_distribution_version}}/prod {{ ansible_distribution_release }} main"
+    state: absent
+
+- name: Remove deprecated Microsoft GPG key from apt keyring
+  become: true
+  ansible.builtin.apt_key:
+    url: https://packages.microsoft.com/keys/microsoft.asc
+    state: absent
+
 - name: Create /etc/apt/keyrings directory
   become: true
   ansible.builtin.file:
